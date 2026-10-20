@@ -2,13 +2,84 @@
 #include "input.hpp"
 
 // Implement the six graph methods and your route helper. See the README at the repository root.
+#include <iostream>
+#include <vector>
+#include <utility>
+using namespace std;
+//находит корень - как? prosto vse smotrit
+int findroot(vector<int>& parent, int x) {
+    int root = x;
+
+    while (parent[root] != root) {
+        root = parent[root];
+    }
+
+    int u = x;
+    //это я взял из практика урока когда вы объясняли ну я понял короче это сжатие 
+    while (u != root) {
+        int next = parent[u];
+        parent[u] = root;
+        u = next;
+    }
+
+    return root;
+}
+//это у нас объеденение унит мы тут объеденяем 
+bool unit(vector<int>& parent, vector<int>& sz, int a, int b) {
+    int rootA = findroot(parent, a);
+    int rootB = findroot(parent, b);
+
+    if (rootA == rootB) {
+        return false;
+    }
+
+    if (sz[rootA] < sz[rootB]) {
+        swap(rootA, rootB);
+    }
+
+    parent[rootB] = rootA;
+    sz[rootA] += sz[rootB];
+
+    return true;
+}
 
 // DSU with path compression and union by size/rank; return states.
 inline J dsu(const J& input) {
     int n = Input::vertexCount(input);
     vector<vector<int>> operations = Input::operations(input);
 
-    throw runtime_error("TODO dsu");
+        vector<int> parent(n);
+    vector<int> sz(n, 1);
+
+    for (int i = 0; i < n; i++) {
+        parent[i] = i;
+    }
+
+    int components = n;
+    int largest = (n == 0 ? 0 : 1);
+
+    J::A states;
+
+    for (const auto& op : operations) {
+        int a = op[0];
+        int b = op[1];
+
+        if (unit(parent, sz, a, b)) {
+            components--;
+
+            int root = findroot(parent, a);
+
+            if (sz[root] > largest) {
+                largest = sz[root];
+            }
+        }
+
+        states.push_back(J::A{components, largest});
+    }
+
+    J result;
+    result["states"] = states;
+    return result;
 }
 
 // Separate Kruskal implementation; return cost, edge_ids, components.
