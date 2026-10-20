@@ -1,5 +1,7 @@
 # Graph algorithms analysis
-вы не представляете как я устал при выполнении данного задания
+# вы не представляете как я устал при выполнении данного задания
+
+
 The C++ solution implements all six required methods and a vertex-route helper. The supplied JSON Lines transport and input adapters are unchanged. Original edge IDs are preserved. All cost and distance sums use `long long`.
 
 ## Build and run
@@ -146,4 +148,4 @@ On these measured graphs Kruskal had lower median times at all three sizes. Sort
 
 ## Sources and AI assistance
 
-The assignment README and provided starter input/JSON adapters define the contract; `tools/public_validate.py` is reused for semantic validation, not as an algorithm implementation. During development, ChatGPT helped explain DSU, Kruskal and Prim, draft the C++ implementations and remaining DFS/SCC/DAG/helper code, and prepare tests, documentation and the benchmark. Checks and measurements reported above were actually run in the assistant's execution environment. This is AI-assisted work; review and disclosure must follow the course syllabus. The Russian walkthrough separates what the student needs to understand from the mechanical JSON interface. No additional external implementation was copied.
+помог мне код объяснить и аналис сделать ну в плане код я писал и ему просил помочь чут чуть
