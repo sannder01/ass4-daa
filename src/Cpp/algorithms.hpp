@@ -87,9 +87,48 @@ inline J kruskal(const J& input) {
     int n = Input::vertexCount(input);
     vector<vector<int>> edges = Input::edges(input);
 
-    throw runtime_error("TODO kruskal");
-}
+    vector<int> parent(n);
+    vector<int> sz(n, 1);
 
+    for (int i = 0; i < n; i++) {
+        parent[i] = i;
+    }
+
+    //вектор вектор как в матрице я назыаю такое секрет виктора
+    vector<vector<int>> sorted;
+    
+    for (int i = 0; i < edges.size(); i++) {
+        int weight = edges[i][2];
+        sorted.push_back({weight, i});
+    }
+
+    // сортируем
+    sort(sorted.begin(), sorted.end());
+
+    long long cost = 0;
+    int components = n;
+    J::A chosen;
+
+    for (int i = 0; i < sorted.size(); i++) {
+        int id = sorted[i][1];
+
+        int a = edges[id][0];
+        int b = edges[id][1];
+        int weight = edges[id][2];
+        //здесь если у вершины две еджес мы вес прибавляем и компоненты отнимаем
+        if (unit(parent, sz, a, b)) {
+            cost += weight;
+            components--;
+            chosen.push_back(id);
+        }
+    }
+
+    J result;
+    result["cost"] = cost;
+    result["edge_ids"] = chosen;
+    result["components"] = components;
+    return result;
+}
 // Separate Prim implementation; restart for every unvisited component.
 inline J prim(const J& input) {
     int n = Input::vertexCount(input);
