@@ -1,5 +1,5 @@
 # Graph algorithms analysis
-
+вы не представляете как я устал при выполнении данного задания
 The C++ solution implements all six required methods and a vertex-route helper. The supplied JSON Lines transport and input adapters are unchanged. Original edge IDs are preserved. All cost and distance sums use `long long`.
 
 ## Build and run
