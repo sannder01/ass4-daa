@@ -134,8 +134,75 @@ inline J prim(const J& input) {
     int n = Input::vertexCount(input);
     vector<vector<int>> edges = Input::edges(input);
 
-    throw runtime_error("TODO prim");
+    vector<vector<int>> graph(n);
+
+    for (int i = 0; i < edges.size(); i++) {
+        int a = edges[i][0];
+        int b = edges[i][1];
+
+        graph[a].push_back(i);
+        graph[b].push_back(i);
+    }
+
+    vector<bool> visited(n, false);
+    long long cost = 0;
+    int components = 0;
+    J::A chosen;
+
+    using Item = pair<int, int>;
+    priority_queue<Item, vector<Item>, greater<Item>> q;
+
+    for (int start = 0; start < n; start++) {
+        if (visited[start]) {
+            continue;
+        }
+
+        components++;
+        visited[start] = true;
+
+        for (int i = 0; i < graph[start].size(); i++) {
+            int id = graph[start][i];
+            int weight = edges[id][2];
+            q.push({weight, id});
+        }
+
+        while (!q.empty()) {
+            int id = q.top().second;
+            q.pop();
+
+            int a = edges[id][0];
+            int b = edges[id][1];
+            int weight = edges[id][2];
+
+            if (visited[a] && visited[b]) {
+                continue;
+            }
+
+            int next = a;
+
+            if (visited[a]) {
+                next = b;
+            }
+
+            visited[next] = true;
+            cost += weight;
+            chosen.push_back(id);
+
+            for (int i = 0; i < graph[next].size(); i++) {
+                int edgeId = graph[next][i];
+                int edgeWeight = edges[edgeId][2];
+                q.push({edgeWeight, edgeId});
+            }
+        }
+    }
+
+    J result;
+    result["cost"] = cost;
+    result["edge_ids"] = chosen;
+    result["components"] = components;
+    return result;
 }
+
 
 // Kosaraju with two DFS passes; return component and condensation.
 inline J scc(const J& input) {
