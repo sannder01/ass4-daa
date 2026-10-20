@@ -1,0 +1,1 @@
+{"calls":[{"cost":0,"edge_ids":[5,3],"target":3,"vertices":[0,2,3]},{"cost":0,"edge_ids":[],"target":0,"vertices":[0]},{"cost":null,"edge_ids":[],"target":4,"vertices":[]},{"cost":3,"parallel_edge_ids_tested":[0,4],"target":1,"vertices":[0,1]}],"deep_route_vertices":100000}

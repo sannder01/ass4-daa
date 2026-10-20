@@ -1,0 +1,130 @@
+{
+  "seed": 20261020,
+  "small_cases": 169,
+  "mixed_requests_in_one_process": 338,
+  "witness_checks": [
+    {
+      "task": "kruskal",
+      "alternative_accepted": true,
+      "invalid_rejected": true
+    },
+    {
+      "task": "prim",
+      "alternative_accepted": true,
+      "invalid_rejected": true
+    },
+    {
+      "task": "scc",
+      "alternative_accepted": true,
+      "invalid_rejected": true
+    },
+    {
+      "task": "topo",
+      "alternative_accepted": true,
+      "invalid_rejected": true
+    },
+    {
+      "task": "dag",
+      "alternative_accepted": true,
+      "invalid_rejected": true
+    }
+  ],
+  "scale": [
+    {
+      "task": "dsu",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 3027802,
+      "actual_sha256": "4d6605d0a69cb7ced654646bfd3318f0a1df8c3c1403db212e64f403736fd1a0",
+      "acyclic": null,
+      "cost": null,
+      "components": null,
+      "last_distance": null
+    },
+    {
+      "task": "kruskal",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 588926,
+      "actual_sha256": "9fd9f7afb71feeda727a6289d7b965c78fe68537ddb5db46d2bf4b0bc24fb7fc",
+      "acyclic": null,
+      "cost": 99999,
+      "components": 1,
+      "last_distance": null
+    },
+    {
+      "task": "prim",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 588926,
+      "actual_sha256": "9fd9f7afb71feeda727a6289d7b965c78fe68537ddb5db46d2bf4b0bc24fb7fc",
+      "acyclic": null,
+      "cost": 99999,
+      "components": 1,
+      "last_distance": null
+    },
+    {
+      "task": "scc",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 1966692,
+      "actual_sha256": "15318c4d1fa74b277f0be37b494396f238787a6550dc13df06ecc85adeaa16a7",
+      "acyclic": null,
+      "cost": null,
+      "components": null,
+      "last_distance": null
+    },
+    {
+      "task": "scc",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 200033,
+      "actual_sha256": "808f55f2c7ba26622a25f21076a6425a6220e35591260e013040ff8e5a01faa6",
+      "acyclic": null,
+      "cost": null,
+      "components": null,
+      "last_distance": null
+    },
+    {
+      "task": "topo",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 588916,
+      "actual_sha256": "a040183d2dc8d3cce0978d78c536b572dadd70d3e43050f15739ecc8ceb6bc16",
+      "acyclic": true,
+      "cost": null,
+      "components": null,
+      "last_distance": null
+    },
+    {
+      "task": "topo",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 28,
+      "actual_sha256": "361fd799a3e653fe60f4b51d8037c12c2c33baed8f8781a8c006e0536d710e47",
+      "acyclic": false,
+      "cost": null,
+      "components": null,
+      "last_distance": null
+    },
+    {
+      "task": "dag",
+      "n": 100000,
+      "rows": 250000,
+      "passed": true,
+      "actual_bytes": 2077813,
+      "actual_sha256": "bfc20a53eea11b682eb3b87d315e1428694a25dfe6b07649bed04265224dcaa8",
+      "acyclic": true,
+      "cost": null,
+      "components": null,
+      "last_distance": 99999000000000
+    }
+  ]
+}
